@@ -1,0 +1,20 @@
+services:
+  dynamic-bench:
+    image: tiagofogolin/netfog-bench-dynamic:${DYN_IMAGE_TAG:-latest}
+    environment:
+      DYN_GRAPHS: ${DYN_GRAPHS:-}
+      DYN_STRUCTURES: ${DYN_STRUCTURES:-}
+      DYN_K: ${DYN_K:-}
+      DYN_MODE: ${DYN_MODE:-}
+      DYN_REPEATS: ${DYN_REPEATS:-}
+      DYN_TIMEOUT_S: ${DYN_TIMEOUT_S:-}
+      BENCH_MEMORY_LIMIT_GB: ${DYN_MEMORY_LIMIT_GB:-16}
+      NETFOG_COMMIT: ${DYN_IMAGE_TAG:-}
+    volumes:
+      - benchmark_results:/results
+    mem_limit: ${DYN_MEMORY_LIMIT:-16g}
+    memswap_limit: ${DYN_MEMORY_LIMIT:-16g}
+    cpus: ${DYN_CPU_LIMIT:-8}
+
+volumes:
+  benchmark_results:

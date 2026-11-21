@@ -1,0 +1,31 @@
+services:
+  runner-python:
+    image: tiagofogolin/netfog-bench-runner-python:v14
+    environment:
+      OMP_NUM_THREADS: ${BENCH_CPU_LIMIT:-8}
+      BENCH_MODE: ${BENCH_MODE:-smoke}
+      BENCH_REPEATS: ${BENCH_REPEATS:-8}
+      BENCH_TIMEOUT_S: ${BENCH_TIMEOUT_S:-7200}
+      BENCH_MEMORY_LIMIT_GB: ${BENCH_MEMORY_LIMIT_GB:-16}
+      BENCH_SIZES: ${BENCH_SIZES:-}
+      BENCH_KERNELS: ${BENCH_KERNELS:-}
+      BENCH_LIBS: ${BENCH_LIBS:-}
+    volumes:
+      - benchmark_results:/results
+    networks:
+      - default
+    deploy:
+      restart_policy:
+        condition: none
+      resources:
+        limits:
+          cpus: "${BENCH_CPU_LIMIT:-8}"
+          memory: ${BENCH_MEMORY_LIMIT:-16g}
+        reservations:
+          cpus: "0.5"
+
+networks:
+  default:
+
+volumes:
+  benchmark_results:
