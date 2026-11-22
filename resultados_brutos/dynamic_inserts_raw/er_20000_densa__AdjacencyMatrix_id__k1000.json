@@ -1,0 +1,15 @@
+{
+  "graph": "er_20000_densa",
+  "structure": "AdjacencyMatrix",
+  "mode": "id",
+  "k": 1000,
+  "status": "inviavel",
+  "per_repeat_total_s": [
+    0.0005603199997494812
+  ],
+  "per_repeat_per_edge_s": [
+    5.603199997494812e-07
+  ],
+  "error": "subprocesso morreu com sinal SIGABRT (6)",
+  "failure_reason": "signal"
+}
